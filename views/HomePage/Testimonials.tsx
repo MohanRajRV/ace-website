@@ -5,6 +5,7 @@ import { A11y, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
 import { media } from 'utils/media';
+import SwiperCardsYear from "components/SwiperCardsYear";
 
 const TESTIMONIALS = [
   {
@@ -65,7 +66,8 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <div>
+    <div style={{ marginTop: '-10.5%' }}>
+      <SwiperCardsYear/>
       <TestimonialsWrapper>
         <Swiper
           modules={[Navigation, Autoplay, A11y]}
@@ -172,6 +174,8 @@ const TestimonialsWrapper = styled(Container)`
     color: rgb(var(--textSecondary));
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23currentColor'%2F%3E%3C%2Fsvg%3E");
   }
+  
+  margin-top:-4%;
 `;
 
 const TestimonialCard = styled.div`
