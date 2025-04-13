@@ -4,23 +4,25 @@ import { EffectCoverflow, Navigation, Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SectionTitle from 'components/SectionTitle';
 
-interface YearItem {
-  year: string;
+// interface YearItem {
+//   year: string;
+// }
+
+interface SwiperCardsYearProps {
+  selectedYear: string | null;
+  setSelectedYear: (year: string) => void;
 }
 
-const SwiperCardsYear: React.FC = () => {
+const SwiperCardsYear: React.FC<SwiperCardsYearProps> = ({ selectedYear, setSelectedYear }) => {
   const currentYear = new Date().getFullYear();
-  const years: YearItem[] = Array.from(
-    { length: currentYear - 2023 }, 
-    (_, i) => ({ year: (2024 + i).toString() })
-  );
-  const [selectedYear, setSelectedYear] = useState<string | null>(null);
+  const years: string[] = Array.from({ length: currentYear - 2023 }, (_, i) => (2024 + i).toString());
+  // const [selectedYear, setSelectedYear] = useState<string | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
 
   const handleYearClick = (year: string, index: number) => {
-    setSelectedYear(year);
+    setSelectedYear(year); // Update state in ParentComponent
     if (swiperRef.current) {
-      swiperRef.current.slideToLoop(index, 500); // Scroll to selected year
+      swiperRef.current.slideToLoop(index, 500);
     }
   };
 
@@ -35,7 +37,7 @@ const SwiperCardsYear: React.FC = () => {
           loop={false}
           slidesPerView={2}
           spaceBetween={20}
-          initialSlide={0} 
+          initialSlide={years.length - 1}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,
@@ -56,13 +58,10 @@ const SwiperCardsYear: React.FC = () => {
           modules={[Navigation, EffectCoverflow]}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
         >
-          {years.map((yearObj, index) => (
+          {years.map((year, index) => (
             <SwiperSlide key={index}>
-              <Content 
-                onClick={() => handleYearClick(yearObj.year, index)}
-                selected={selectedYear === yearObj.year}
-              >
-                <YearText>{yearObj.year}</YearText>
+              <Content onClick={() => handleYearClick(year, index)} selected={selectedYear === year}>
+                <YearText>{year}</YearText>
               </Content>
             </SwiperSlide>
           ))}
@@ -76,16 +75,15 @@ const SwiperCardsYear: React.FC = () => {
 export default SwiperCardsYear;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
-  margin-top: -5%;  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+  margin-top: -5%;
   margin-bottom: -3.5%;
 `;
 
 const SectionTitleStyled = styled(SectionTitle)`
   font-size: 1.5rem;
   text-align: center;
-  margin-bottom:-3.5%;
-  
+  margin-bottom: -3.5%;
 `;
 
 const Collection = styled.section`
@@ -124,8 +122,8 @@ const Content = styled.div<{ selected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 6rem;  /* Adjust the height */
-  width: 18rem;   /* Adjust the width to make it rectangular */
+  height: 6rem; /* Adjust the height */
+  width: 18rem; /* Adjust the width to make it rectangular */
   background-color: ${({ selected }) => (selected ? '#0099ff' : 'rgb(var(--secondBackground))')};
   border: 0.2rem solid rgba(255, 255, 255, 0.1);
   border-radius: 0.7rem;
@@ -140,19 +138,16 @@ const Content = styled.div<{ selected: boolean }>`
   transition: background-color 0.3s ease;
 
   @media (max-width: 768px) {
-    height: 6rem;  /* Adjust the height for smaller screens */
-    width: 16rem;  /* Adjust the width for smaller screens */
+    height: 6rem; /* Adjust the height for smaller screens */
+    width: 16rem; /* Adjust the width for smaller screens */
     font-size: 1.5rem;
   }
 
   @media (max-width: 480px) {
-  
-    height: 4rem;  
-    width: 6rem;  
+    height: 4rem;
+    width: 6rem;
     font-size: 1.2rem;
   }
-  
- 
 `;
 
 const YearText = styled.div`
