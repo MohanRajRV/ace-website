@@ -62,18 +62,19 @@ const FEATURES = [
     description:
       'Members of this sub-cluster will ensure that all events and activities run smoothly. They will be responsible for the logistical aspects of events, ensuring that everything is well-organized and executed efficiently.',
   },
+  {
+    imageUrl: '/Clusters/CSI.png',
+    title: 'Computer Society of India (CSI)',
+    description:
+      "As SASTRA University's chapter of the Computer Society of India, this sub-cluster offers students opportunities to engage in technical workshops, seminars, and competitions. Members can enhance their skills, network with professionals, and contribute to the advancement of computer science and related fields within the academic community.",
+  },
 ];
 
 export default function Features() {
   return (
     <>
       <MobileView>
-        <CustomSwiper
-          effect="cards"
-          grabCursor={true}
-          navigation={true}
-          modules={[EffectCards, Navigation]}
-        >
+        <CustomSwiper effect="cards" grabCursor={true} navigation={true} modules={[EffectCards, Navigation]}>
           {FEATURES.map((singleFeature, idx) => (
             <SwiperSlide key={singleFeature.title}>
               <BasicCard {...singleFeature} />

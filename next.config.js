@@ -13,6 +13,10 @@ module.exports = withBundleAnalyzer({
         protocol: 'https',
         hostname: 'github.blog',
       },
+      {
+        protocol: 'https',
+        hostname: 'iili.io',
+      },
     ],
     deviceSizes: [320, 640, 1080, 1200],
     imageSizes: [64, 128],
