@@ -34,7 +34,7 @@ const FEATURES = [
   },
   {
     imageUrl:'/Clusters/Iot.png',
-    title:'IOT',
+    title:'IOT & Embedded Systems',
     description:
         'Members of this sub-cluster will explore the integration of hardware and software to build smart, connected systems. They will work on real-time data collection, sensor-based automation, and networked devices, contributing to ACE events through innovative IoT prototypes and tech-driven solutions.'
   },
@@ -64,7 +64,7 @@ const FEATURES = [
   },
   {
     imageUrl: '/Clusters/Opcon.png',
-    title: 'OpCon and PR (Operations and Control)',
+    title: 'OpCon&PR (Operations, Control and Promotions)',
     description:
       'Members of this sub-cluster will ensure that all events and activities run smoothly. They will be responsible for the logistical aspects of events, ensuring that everything is well-organized and executed efficiently.',
   },
