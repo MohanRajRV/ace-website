@@ -151,7 +151,7 @@ const Content = styled.div<{ selected: boolean }>`
 `;
 
 const YearText = styled.div`
-  color: white;
+  color: black;
 `;
 
 const SelectedYearText = styled.p`
